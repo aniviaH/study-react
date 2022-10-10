@@ -3,14 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import {ExampleUseState} from './hooks/useState'
+import {ExampleUseState, ClassExampleUseState} from './hooks/useState'
+import {FriendStatus, FriendListItem} from './hooks/FriendStatus'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const friend = {
+  id: '1',
+  name: '张三'
+}
+
 root.render(
   // <React.StrictMode>
     // <App />
-
-    <ExampleUseState/>
+    <>
+      <ExampleUseState/>
+      <ClassExampleUseState />
+      <FriendStatus friend={friend}></FriendStatus>
+      <FriendListItem friend={friend}></FriendListItem>
+    </>
   // </React.StrictMode>
 );
 
