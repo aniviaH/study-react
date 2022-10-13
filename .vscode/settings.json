@@ -1,0 +1,17 @@
+{
+  // 是否自动保存
+  "files.autoSave": "off",
+  // 设置自动保存文件前需要延迟的时间，单位毫秒 默认1000
+  "files.autoSaveDelay": 5000,
+  // 设置 读写文件时所用编码 默认utf-8，可针对每种语言进行设置
+  "files.encoding": "utf8",
+
+  // 保存时自动格式化
+  // "editor.formatOnSave": true,
+  // 使用prettier配置文件
+  // "prettier.configPath": "./.prettierrc.js",
+  // 使用prettier作为默认格式化工具
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

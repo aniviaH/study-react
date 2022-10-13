@@ -7,6 +7,33 @@ export function ExampleUseState () {
   console.log('ExampleUseState------render---')
 
   const [count, setCount] = useState(0)
+
+  const a = 1
+
+  if (a > 2) {
+    /**
+     * Hook 规则
+     * 1.只在最顶层使用 Hook 不要在循环，条件或嵌套函数中调用 Hook
+     * 2.只在 React 函数中调用 Hook 不要在普通的 JavaScript 函数中调用 Hook。
+     * -✅ 在 React 的函数组件中调用 Hook
+     * -✅ 在自定义 Hook 中调用其他 Hook (我们将会在下一页 中学习这个。)
+     */
+    /**
+      使用 eslint-plugin-react-hooks ESLint 插件来强制执行上面两条hook的规则
+      .eslintrc.js
+      "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+      "react-hooks/exhaustive-deps": "warn" // 检查 effect 的依赖
+    */
+
+    // React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render.
+    // const [count2, setCoun2] = useState(0)
+    
+    // React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render.
+    // useEffect(() => {
+    //   console.log('test---useEffect---')
+    // })
+  }
+
   const onClick = () => {
     setCount(count + 1)
   }

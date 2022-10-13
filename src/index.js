@@ -6,6 +6,8 @@ import App from './App';
 import {ExampleUseState, ClassExampleUseState} from './hooks/useState'
 import {FriendStatus, FriendListItem} from './hooks/FriendStatus'
 
+import './test-eslint/index'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const friend = {
