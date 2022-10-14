@@ -8,9 +8,7 @@ export function ExampleUseState () {
 
   const [count, setCount] = useState(0)
 
-  const a = 1
-
-  if (a > 2) {
+  if (count > 2) {
     /**
      * Hook 规则
      * 1.只在最顶层使用 Hook 不要在循环，条件或嵌套函数中调用 Hook
