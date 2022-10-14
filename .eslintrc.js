@@ -13,6 +13,6 @@ module.exports = {
   "rules": {
     "comma-dangle": "off", // 尾逗号[0 = off, 1 = warn, 2 = error]
     "react-hooks/rules-of-hooks": "error", // eslint-plugin-react-hooks 检查 Hook 的规则
-    "react-hooks/exhaustive-deps": "warn" // eslint-plugin-react-hooks 检查 effect 的依赖
+    "react-hooks/exhaustive-deps": "error" // eslint-plugin-react-hooks 检查 effect 的依赖
   }
 }

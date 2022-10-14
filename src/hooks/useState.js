@@ -34,6 +34,8 @@ export function ExampleUseState () {
 
   const onClick = () => {
     setCount(count + 1)
+
+    localStorage.setItem('MY-REACT-APP---click-count', count)
   }
 
   setCountArr.push(setCount)
@@ -46,17 +48,37 @@ export function ExampleUseState () {
   const [fruit, setFruit] = useState('banana');
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 
+  // 被 effect hook调用的函数，挪到hook函数里去
+  // The 'logFruit' function makes the dependencies of useEffect Hook (at line 80) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'logFruit' in its own useCallback() Hook.
+  // function logFruit () {
+  //   console.log('fruit---', fruit)
+  // }
+
   // 相当于 componentDidMount 和 componentDidUpdate:
   const effect = () => {
     console.log('effect---new count:', count)
     // 使用浏览器的 API 更新页面标题
     document.title = `You clicked ${count} times`
 
+    function logFruit () {
+      console.log('fruit---', fruit)
+    }
+
+    if (count > 2) {
+      console.log('count is greater than 2---')
+      console.log('age---', age)
+    } else if (count < 2) {
+      console.log('count is less than 2---')
+      logFruit()
+    } else {
+      console.log('count is equal to 2---')
+    }
+
     return () => {
       console.log('effect---clear---old count', count) // effect hook中返回的清除函数会在组件卸载的时候执行清除操作（effect 的清除阶段在每次重新渲染时都会执行）
     }
   }
-  useEffect(effect)
+  useEffect(effect, [count, age, fruit]) // eslint校验 "react-hooks/exhaustive-deps": "warn" // eslint-plugin-react-hooks 检查 effect 的依赖
 
   effectArr.push(effect)
   console.log('effectArr---', effectArr)
@@ -73,6 +95,10 @@ export function ExampleUseState () {
       <p>age: {age}</p>
       <p>fruit: {fruit}</p>
       <p>todos: {todos[0].text}</p>
+
+      <p>
+        <a href="https://baidu.com">百度</a>
+      </p>
     </div>
   )
 }
