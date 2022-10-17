@@ -30,8 +30,53 @@ export function FriendListItem (props) {
   const isOnline = useFriendStatus(props.friend.id)
   
   return (
-    <li style={{color: isOnline ? 'green' : 'black'}}>
-      {props.friend.name}
-    </li>
+    <>
+      {/* <ul> */}
+        <li style={{color: isOnline ? 'green' : 'black'}}>
+          {props.friend.name}
+        </li>
+      {/* </ul> */}
+      <Circle color={isOnline ? 'green' : 'black'}></Circle>
+      <div>{props.friend.name}</div>
+    </>
   )
+}
+
+export function FriendSelect () {
+  const friendList = [
+    { id: 1, name: 'Phoebe' },
+    { id: 2, name: 'Rachel' },
+    { id: 3, name: 'Ross' },
+  ]
+
+  const [recipientID, setRecipientID] = useState(1);
+  const isRecipientOnline = useFriendStatus(recipientID);
+
+  return (
+    <p>
+      <select
+        value={recipientID}
+        onChange={e => setRecipientID(e.target.value)}
+      >
+        {friendList.map(friend => (
+          <option key={friend.id} value={friend.id}>
+            {friend.name}
+          </option>
+        ))}
+      </select>
+      <Circle color={isRecipientOnline ? 'green' : 'red'} />
+
+      <p>---------------------------</p>
+    </p>
+  )
+}
+
+function Circle (props) {
+  return (
+    <div style={{width: '10px', height: '10px', borderRadius: '50%', backgroundColor: props.color}}></div>
+  )
+}
+
+function CompDivider () {
+  return <p>---------------------------</p>
 }

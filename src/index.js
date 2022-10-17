@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import {ExampleUseState, ClassExampleUseState} from './hooks/useState'
-import {FriendStatus, FriendListItem} from './hooks/FriendStatus'
+import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 
 import './test-eslint/index'
 
@@ -21,8 +21,10 @@ root.render(
     <>
       <ExampleUseState/>
       <ClassExampleUseState />
+
       <FriendStatus friend={friend}></FriendStatus>
       <FriendListItem friend={friend}></FriendListItem>
+      <FriendSelect></FriendSelect>
     </>
   // </React.StrictMode>
 );

@@ -129,6 +129,7 @@ export class ClassExampleUseState extends React.Component {
       <div>
         <p>You Clicked {this.state.count} times</p>
         <button onClick={() => this.setState({count: this.state.count + 1})}>click me</button>
+        <p>---------------------------</p>
       </div>
     )
   }
