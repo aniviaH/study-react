@@ -6,7 +6,7 @@ module.exports = {
 	tabWidth: 2,
 
 	// 使用制表符而不是空格缩进行
-	useTabs: true,
+	useTabs: false,
 
 	// 使用单引号而不是双引号
 	singleQuote: true,
