@@ -31,11 +31,9 @@ export function FriendListItem (props) {
   
   return (
     <>
-      {/* <ul> */}
-        <li style={{color: isOnline ? 'green' : 'black'}}>
-          {props.friend.name}
-        </li>
-      {/* </ul> */}
+      <li style={{color: isOnline ? 'green' : 'black'}}>
+        {props.friend.name}
+      </li>
       <Circle color={isOnline ? 'green' : 'black'}></Circle>
       <div>{props.friend.name}</div>
     </>
@@ -49,11 +47,13 @@ export function FriendSelect () {
     { id: 3, name: 'Ross' },
   ]
 
+  // 在多个 Hook 之间传递信息
   const [recipientID, setRecipientID] = useState(1);
   const isRecipientOnline = useFriendStatus(recipientID);
 
   return (
-    <p>
+    <div>
+      <p></p>
       <select
         value={recipientID}
         onChange={e => setRecipientID(e.target.value)}
@@ -67,7 +67,7 @@ export function FriendSelect () {
       <Circle color={isRecipientOnline ? 'green' : 'red'} />
 
       <p>---------------------------</p>
-    </p>
+    </div>
   )
 }
 
