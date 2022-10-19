@@ -7,7 +7,7 @@ export function Todos () {
   const [todos, dispatch] = useReducer(todosReducer, [])
 
   const [id, setId] = useState(1)
-  
+
   function handleAddClick(text) {
     dispatch({
       type: 'add',

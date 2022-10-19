@@ -6,6 +6,7 @@ import App from './App';
 import {ExampleUseState, ClassExampleUseState} from './hooks/useState'
 import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 import {Todos} from './hooks/Todos'
+import {AppThemeColor} from './hooks/useContext'
 
 import './test-eslint/index'
 
@@ -28,6 +29,8 @@ root.render(
       <FriendSelect></FriendSelect>
 
       <Todos></Todos>
+
+      <AppThemeColor></AppThemeColor>
     </>
   // </React.StrictMode>
 );
