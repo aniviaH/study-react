@@ -34,8 +34,11 @@ function Toolbar(props) {
 function ThemeButton() {
   const theme = useContext(ThemeContext)
   return (
-    <button style={{background: theme.background, color: theme.foreground}}>
-      I am styled by theme context -- theme: {theme.text}
-    </button>
+    <>
+      <h3>内置hook useContext</h3>
+      <button style={{background: theme.background, color: theme.foreground}}>
+        I am styled by theme context -- theme: {theme.text}
+      </button>
+    </>
   )
 }

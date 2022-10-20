@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 
 const setCountArr = []
 const effectArr = []
@@ -89,16 +89,15 @@ export function ExampleUseState () {
 
   return (
     <div>
-      <p>{count}</p>
+      <h3>内置hook useState</h3>
+      <div>count: {count}</div>
       <button onClick={onClick}>click me</button>
 
       <p>age: {age}</p>
       <p>fruit: {fruit}</p>
       <p>todos: {todos[0].text}</p>
 
-      <p>
-        <a href="https://baidu.com">百度</a>
-      </p>
+      <p>---------------------------</p>
     </div>
   )
 }
@@ -127,10 +126,38 @@ export class ClassExampleUseState extends React.Component {
   render () {
     return (
       <div>
-        <p>You Clicked {this.state.count} times</p>
+        <h3>内置hook useState</h3>
+        <div>You Clicked {this.state.count} times</div>
         <button onClick={() => this.setState({count: this.state.count + 1})}>click me</button>
         <p>---------------------------</p>
       </div>
     )
   }
+}
+
+export function ExampleUseReducer(param) {
+  const initialState = {count: 0}
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'increment':
+        return {count: state.count + 1}
+      case 'decrement':
+        return {count: state.count - 1}
+      default:
+        return new Error()
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <>
+      <h3>内置hook useReducer</h3>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+
+      <p>---------------------------</p>
+    </>
+  )
 }

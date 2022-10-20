@@ -22,7 +22,12 @@ export function FriendStatus (props) {
   if (isOnline === null) {
     return 'Loading...'
   }
-  return isOnline ? 'Online' : 'Offline'
+  return (
+    <>
+      <h3>自定义hook useFriendStatus</h3>
+      {isOnline ? 'Online' : 'Offline'}
+    </>
+  )
 }
 
 export function FriendListItem (props) {
@@ -53,7 +58,6 @@ export function FriendSelect () {
 
   return (
     <div>
-      <p></p>
       <select
         value={recipientID}
         onChange={e => setRecipientID(e.target.value)}

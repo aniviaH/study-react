@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import {ExampleUseState, ClassExampleUseState} from './hooks/useState'
+import {ExampleUseState, ClassExampleUseState, ExampleUseReducer} from './hooks/useState'
 import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 import {Todos} from './hooks/Todos'
 import {AppThemeColor} from './hooks/useContext'
@@ -23,6 +23,7 @@ root.render(
     <>
       <ExampleUseState/>
       <ClassExampleUseState />
+      <ExampleUseReducer />
 
       <FriendStatus friend={friend}></FriendStatus>
       <FriendListItem friend={friend}></FriendListItem>

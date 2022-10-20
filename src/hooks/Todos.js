@@ -20,6 +20,7 @@ export function Todos () {
 
   return (
     <>
+      <h3>自定义hook useReducer</h3>
       <input placeholder="add todo" value={todo} onChange={e => setTodo(e.target.value)}></input>
       <button onClick={handleAddClick}>add todo</button>
       <ul>
