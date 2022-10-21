@@ -135,8 +135,14 @@ export class ClassExampleUseState extends React.Component {
   }
 }
 
-export function ExampleUseReducer(param) {
+export function ExampleUseReducer({initailCount = 100}) {
   const initialState = {count: 0}
+  function init (initailCount) {
+    debugger
+    return {
+      count: initailCount
+    }
+  }
 
   function reducer(state, action) {
     switch (action.type) {
@@ -144,19 +150,28 @@ export function ExampleUseReducer(param) {
         return {count: state.count + 1}
       case 'decrement':
         return {count: state.count - 1}
+      case 'reset':
+        return init(action.payload)
       default:
         return new Error()
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  // const [state, dispatch] = useReducer(reducer, initialState)
+
+  /* 
+    惰性初始化
+    你可以选择惰性地创建初始 state。为此，需要将 init 函数作为 useReducer 的第三个参数传入，这样初始 state 将被设置为 init(initialArg)。
+    这么做可以将用于计算 state 的逻辑提取到 reducer 外部，这也为将来对重置 state 的 action 做处理提供了便利：
+   */
+  const [state, dispatch] = useReducer(reducer, initailCount, init)
   return (
     <>
       <h3>内置hook useReducer</h3>
       Count: {state.count}
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
       <button onClick={() => dispatch({type: 'increment'})}>+</button>
-
+      <button onClick={() => dispatch({type: 'reset', payload: initailCount})}>Reset</button>
       <p>---------------------------</p>
     </>
   )
