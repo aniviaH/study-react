@@ -7,6 +7,7 @@ import {ExampleUseState, ClassExampleUseState, ExampleUseReducer} from './hooks/
 import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 import {Todos} from './hooks/Todos'
 import {AppThemeColor} from './hooks/useContext'
+import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from './hooks/useRef'
 
 import './test-eslint/index'
 
@@ -32,6 +33,10 @@ root.render(
       <Todos></Todos>
 
       <AppThemeColor></AppThemeColor>
+
+      <TextInputWithFocusButton></TextInputWithFocusButton>
+      <MeasureExample></MeasureExample>
+      <MeasureExample2></MeasureExample2>
     </>
   // </React.StrictMode>
 );

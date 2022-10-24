@@ -70,7 +70,7 @@ export function FriendSelect () {
       </select>
       <Circle color={isRecipientOnline ? 'green' : 'red'} />
 
-      <p>---------------------------</p>
+      <p>---------------------------------------------</p>
     </div>
   )
 }
@@ -82,5 +82,5 @@ function Circle (props) {
 }
 
 function CompDivider () {
-  return <p>---------------------------</p>
+  return <p>---------------------------------------------</p>
 }

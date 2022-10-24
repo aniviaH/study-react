@@ -39,6 +39,8 @@ function ThemeButton() {
       <button style={{background: theme.background, color: theme.foreground}}>
         I am styled by theme context -- theme: {theme.text}
       </button>
+
+      <p>---------------------------------------------</p>
     </>
   )
 }

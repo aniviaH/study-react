@@ -97,7 +97,7 @@ export function ExampleUseState () {
       <p>fruit: {fruit}</p>
       <p>todos: {todos[0].text}</p>
 
-      <p>---------------------------</p>
+      <p>---------------------------------------------</p>
     </div>
   )
 }
@@ -129,7 +129,7 @@ export class ClassExampleUseState extends React.Component {
         <h3>内置hook useState</h3>
         <div>You Clicked {this.state.count} times</div>
         <button onClick={() => this.setState({count: this.state.count + 1})}>click me</button>
-        <p>---------------------------</p>
+        <p>---------------------------------------------</p>
       </div>
     )
   }
@@ -172,7 +172,7 @@ export function ExampleUseReducer({initailCount = 100}) {
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
       <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'reset', payload: initailCount})}>Reset</button>
-      <p>---------------------------</p>
+      <p>---------------------------------------------</p>
     </>
   )
 }
