@@ -8,6 +8,7 @@ import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 import {Todos} from './hooks/Todos'
 import {AppThemeColor} from './hooks/useContext'
 import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from './hooks/useRef'
+import {ExampleUseCallback1, ExampleUseCallback2} from './hooks/useCallback'
 
 import './test-eslint/index'
 
@@ -37,6 +38,9 @@ root.render(
       <TextInputWithFocusButton></TextInputWithFocusButton>
       <MeasureExample></MeasureExample>
       <MeasureExample2></MeasureExample2>
+
+      <ExampleUseCallback1></ExampleUseCallback1>
+      <ExampleUseCallback2></ExampleUseCallback2>
     </>
   // </React.StrictMode>
 );

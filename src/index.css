@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  padding-bottom: 30px;
 }
 
 code {
@@ -13,6 +16,6 @@ code {
 }
 
 
-h3 {
+h3, h4, h5, h6 {
   margin: 10px 0;
 }

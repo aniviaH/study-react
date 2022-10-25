@@ -27,12 +27,11 @@ export function MeasureExample() {
 
   return (
     <>
-      <h1 ref={measuredRef}>callback ref</h1>
-      <h2>The  above  header is {Math.round(height)}px tall</h2>
+      <h4 ref={measuredRef}>callback ref</h4>
+      <h4>The  above  header is {Math.round(height)}px tall</h4>
     </>
   )
 }
-
 /* 
 在这个案例中，我们没有选择使用 useRef，因为当 ref 是一个对象时它并不会把当前 ref 的值的 变化 通知到我们。使用 callback ref 可以确保 即便子组件延迟显示被测量的节点 (比如为了响应一次点击)，我们依然能够在父组件接收到相关的信息，以便更新测量结果。
 注意到我们传递了 [] 作为 useCallback 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。
@@ -44,10 +43,10 @@ export function MeasureExample2() {
   const [rect, ref] = useClientRect()
   return (
     <>
-      <h1 ref={ref}>callback ref</h1>
+      <h4 ref={ref}>callback ref</h4>
       {
         rect !== null && 
-        <h2>The  above  header is {Math.round(rect.height)}px tall</h2>
+        <h4>The  above  header is {Math.round(rect.height)}px tall</h4>
       }
       <p>---------------------------------------------</p>
     </>
