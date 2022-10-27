@@ -3,6 +3,31 @@ import React, { useEffect, useState, useReducer } from "react";
 const setCountArr = []
 const effectArr = []
 
+export function ExampleUseState0 () {
+  console.log('ExampleUseState0---渲染---')
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <h3>内置hook useState</h3>
+
+      <Child count={count}></Child>
+
+
+      <button onClick={() => setCount(c => c + 1)}>add</button>
+
+      {/* 如果你更新 State Hook 后的 state 与当前的 state 相同时，React 将跳过子组件的渲染并且不会触发 effect 的执行。（React 使用 Object.is 比较算法 来比较 state。） */}
+      <button onClick={() => setCount(c => c)}>setCurrent</button>
+    </>
+  )
+}
+function Child ({count}) {
+  console.log('Child---渲染---');
+  return (
+    <div>{count}</div>
+  )
+}
+
 export function ExampleUseState () {
   console.log('ExampleUseState------render---')
 
@@ -89,7 +114,7 @@ export function ExampleUseState () {
 
   return (
     <div>
-      <h3>内置hook useState</h3>
+      <p></p>
       <div>count: {count}</div>
       <button onClick={onClick}>click me</button>
 

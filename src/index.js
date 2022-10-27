@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import {ExampleUseState, ClassExampleUseState, ExampleUseReducer} from './hooks/useState'
+import {ExampleUseState, ClassExampleUseState, ExampleUseReducer, ExampleUseState0} from './hooks/useState'
 import {FriendStatus, FriendListItem, FriendSelect} from './hooks/FriendStatus'
 import {Todos} from './hooks/Todos'
 import {AppThemeColor} from './hooks/useContext'
@@ -26,6 +26,7 @@ root.render(
   // <React.StrictMode>
     // <App />
     <>
+      <ExampleUseState0></ExampleUseState0>
       <ExampleUseState/>
       <ClassExampleUseState />
       <ExampleUseReducer />
