@@ -9,6 +9,7 @@ import {Todos} from './hooks/Todos'
 import {AppThemeColor} from './hooks/useContext'
 import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from './hooks/useRef'
 import {ExampleUseCallback1, ExampleUseCallback2} from './hooks/useCallback'
+import {ExampleUseImperativeHandle} from './hooks/useImperativeHandle'
 
 import './test-eslint/index'
 
@@ -41,6 +42,8 @@ root.render(
 
       <ExampleUseCallback1></ExampleUseCallback1>
       <ExampleUseCallback2></ExampleUseCallback2>
+
+      <ExampleUseImperativeHandle></ExampleUseImperativeHandle>
     </>
   // </React.StrictMode>
 );
