@@ -11,6 +11,7 @@ import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from './hooks
 import {ExampleUseCallback1, ExampleUseCallback2} from './hooks/useCallback'
 import {ExampleUseImperativeHandle} from './hooks/useImperativeHandle'
 import {ExampleUseTransition} from './hooks/useTransition'
+import {ExampleUseId} from './hooks/useId'
 
 import './test-eslint/index'
 
@@ -47,6 +48,8 @@ root.render(
       <ExampleUseImperativeHandle></ExampleUseImperativeHandle>
 
       <ExampleUseTransition></ExampleUseTransition>
+
+      <ExampleUseId></ExampleUseId>
     </>
   // </React.StrictMode>
 );
