@@ -10,6 +10,7 @@ import {AppThemeColor} from './hooks/useContext'
 import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from './hooks/useRef'
 import {ExampleUseCallback1, ExampleUseCallback2} from './hooks/useCallback'
 import {ExampleUseImperativeHandle} from './hooks/useImperativeHandle'
+import {ExampleUseTransition} from './hooks/useTransition'
 
 import './test-eslint/index'
 
@@ -44,6 +45,8 @@ root.render(
       <ExampleUseCallback2></ExampleUseCallback2>
 
       <ExampleUseImperativeHandle></ExampleUseImperativeHandle>
+
+      <ExampleUseTransition></ExampleUseTransition>
     </>
   // </React.StrictMode>
 );
