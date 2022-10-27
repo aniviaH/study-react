@@ -5,7 +5,13 @@ const effectArr = []
 
 export function ExampleUseState0 () {
   console.log('ExampleUseState0---渲染---')
-  const [count, setCount] = useState(0)
+  // initialState 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：
+  // const [count, setCount] = useState(0)
+  const [count, setCount] = useState(() => {
+    // const initialState = someExpensiveComputation(props);
+    const initialState = 0;
+    return initialState;
+  })
 
   return (
     <>
