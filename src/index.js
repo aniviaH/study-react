@@ -12,6 +12,7 @@ import {ExampleUseCallback1, ExampleUseCallback2} from './hooks/useCallback'
 import {ExampleUseImperativeHandle} from './hooks/useImperativeHandle'
 import {ExampleUseTransition} from './hooks/useTransition'
 import {ExampleUseId} from './hooks/useId'
+import {ExampleUseEffect} from './hooks/useEffect'
 
 import './test-eslint/index'
 
@@ -51,6 +52,8 @@ root.render(
       <ExampleUseTransition></ExampleUseTransition>
 
       <ExampleUseId></ExampleUseId>
+
+      <ExampleUseEffect></ExampleUseEffect>
     </>
   // </React.StrictMode>
 );
