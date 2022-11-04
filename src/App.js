@@ -1,7 +1,53 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import React from 'react'
+import {
+  // BrowserRouter as Router,
+  HashRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom'
+
+import Home from './views/Home'
+import About from './views/About'
+import User from './views/User'
+
+export default function App (props) {
+  console.log('App---', props);
+  return (
+    <Router>
+      <div>
+        {/* 页面链接 */}
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/user">User</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/about" element={<About/>}>
+          </Route>
+          <Route path="/user" element={<User />}>
+          </Route>
+          <Route path="/" element={<Home />}>
+          </Route>
+        </Routes>
+      </div>
+    </Router>
+  )
+}
+
+function AppDefault() {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,4 +68,3 @@ function App() {
   );
 }
 
-export default App;

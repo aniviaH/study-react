@@ -25,37 +25,37 @@ const friend = {
 
 root.render(
   // <React.StrictMode>
-    // <App />
-    <>
-      <ExampleOfOldStateAndProp></ExampleOfOldStateAndProp>
-      <ExampleUseState0></ExampleUseState0>
-      <ExampleUseState/>
-      <ClassExampleUseState />
-      <ExampleUseReducer />
+    <App />
+    // <>
+    //   <ExampleOfOldStateAndProp></ExampleOfOldStateAndProp>
+    //   <ExampleUseState0></ExampleUseState0>
+    //   <ExampleUseState/>
+    //   <ClassExampleUseState />
+    //   <ExampleUseReducer />
 
-      <FriendStatus friend={friend}></FriendStatus>
-      <FriendListItem friend={friend}></FriendListItem>
-      <FriendSelect></FriendSelect>
+    //   <FriendStatus friend={friend}></FriendStatus>
+    //   <FriendListItem friend={friend}></FriendListItem>
+    //   <FriendSelect></FriendSelect>
 
-      <Todos></Todos>
+    //   <Todos></Todos>
 
-      <AppThemeColor></AppThemeColor>
+    //   <AppThemeColor></AppThemeColor>
 
-      <TextInputWithFocusButton></TextInputWithFocusButton>
-      <MeasureExample></MeasureExample>
-      <MeasureExample2></MeasureExample2>
+    //   <TextInputWithFocusButton></TextInputWithFocusButton>
+    //   <MeasureExample></MeasureExample>
+    //   <MeasureExample2></MeasureExample2>
 
-      <ExampleUseCallback1></ExampleUseCallback1>
-      <ExampleUseCallback2></ExampleUseCallback2>
+    //   <ExampleUseCallback1></ExampleUseCallback1>
+    //   <ExampleUseCallback2></ExampleUseCallback2>
 
-      <ExampleUseImperativeHandle></ExampleUseImperativeHandle>
+    //   <ExampleUseImperativeHandle></ExampleUseImperativeHandle>
 
-      <ExampleUseTransition></ExampleUseTransition>
+    //   <ExampleUseTransition></ExampleUseTransition>
 
-      <ExampleUseId></ExampleUseId>
+    //   <ExampleUseId></ExampleUseId>
 
-      <ExampleUseEffect></ExampleUseEffect>
-    </>
+    //   <ExampleUseEffect></ExampleUseEffect>
+    // </>
   // </React.StrictMode>
 );
 
