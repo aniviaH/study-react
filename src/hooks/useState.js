@@ -133,6 +133,31 @@ export function ExampleUseState () {
   )
 }
 
+
+export function ExampleOfOldStateAndProp() {
+  console.log('Example---');
+  const [count, setCount] = useState(0);
+
+  // 如果你先点击「Show alert」然后增加计数器的计数，那这个 alert 会显示在你点击『Show alert』按钮时的 count 变量。
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert('You clicked on: ' + count);
+    }, 3000);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+      <button onClick={handleAlertClick}>
+        Show alert
+      </button>
+    </div>
+  );
+}
+
 export class ClassExampleUseState extends React.Component {
   constructor (props) {
     super(props)
