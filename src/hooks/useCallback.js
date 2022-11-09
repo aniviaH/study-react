@@ -143,15 +143,16 @@ export function Parent () {
     <>
       <p></p>
       {/* <button onClick={() => setParentState(val => val + 1)}>点击我改变父组件中与Child组件（被Memo包裹）无关的state</button> */}
-      <button onClick={() => setParentState(parentState + 1)}>点击我改变父组件中与Child组件（被Memo包裹）无关的state</button>
+      <button onClick={() => setParentState(parentState + 1)}>点击我 改变父组件中 与Child组件无关的state（Child组件需要被Memo包裹）)</button>
 
-      {/* 将父组件的函数传入子组件 */}
+      
       {/* 更新parentState不会触发子组件更新 */}
       {/* <Child count={count}></Child> */}
 
       {/* 更新parentState会触发子组件更新 */}
       {/* <Child parentState={parentState}></Child> */}
 
+      {/* 将父组件的函数传入子组件 */}
       {/* 更新parentState会触发子组件更新 */}
       {/* <Child fun={toChildFun}></Child> */}
 

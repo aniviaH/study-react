@@ -106,7 +106,7 @@ export function ExampleUseState () {
     }
 
     return () => {
-      console.log('effect---clear---old count', count) // effect hook中返回的清除函数会在组件卸载的时候执行清除操作（effect 的清除阶段在每次重新渲染时都会执行）
+      console.log('清除useEffect---old count', count) // effect hook中返回的清除函数会在组件卸载的时候执行清除操作（effect 的清除阶段在每次重新渲染时都会执行）
     }
   }
   useEffect(effect, [count, age, fruit]) // eslint校验 "react-hooks/exhaustive-deps": "warn" // eslint-plugin-react-hooks 检查 effect 的依赖
