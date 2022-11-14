@@ -14,6 +14,7 @@ import Home from './views/Home'
 import About from './views/About'
 import User from './views/User'
 import Hooks from './views/hooks'
+import HooksFaq from './views/hooks-faq'
 
 export default function App (props) {
   console.log('App---', props);
@@ -35,6 +36,9 @@ export default function App (props) {
             <li>
               <Link to="/hooks">Hooks</Link>
             </li>
+            <li>
+              <Link to="/hooks">Hooks-FAQ</Link>
+            </li>
           </ul>
         </nav>
 
@@ -44,6 +48,8 @@ export default function App (props) {
           <Route path="/user" element={<User />}>
           </Route>
           <Route path="/hooks" element={<Hooks />}>
+          </Route>
+          <Route path="/hooks-faq" element={<HooksFaq />}>
           </Route>
           <Route path="/" element={<Home />}>
           </Route>

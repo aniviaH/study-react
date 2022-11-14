@@ -45,8 +45,12 @@ export function MeasureExample2() {
     <>
       <h4 ref={ref}>callback ref</h4>
       {
-        rect !== null && 
-        <h4>The  above  header is {Math.round(rect.height)}px tall</h4>
+        rect !== null && (
+          <>
+            <h4>The  above  header is {Math.round(rect.height)}px tall</h4>
+            <h4>The  above  header is {Math.round(rect.width)}px width</h4>
+          </>
+        )
       }
       <p>---------------------------------------------</p>
     </>

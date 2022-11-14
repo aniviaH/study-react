@@ -1,16 +1,28 @@
 import { useState, useEffect, useLayoutEffect, useInsertionEffect } from "react";
 
-export function ExampleUseEffect () {
+export function ExampleUseEffect (props) {
   const [count, setCount] = useState(0)
+
+  const {x} = props
 
   function handleCountChange () {
     setCount(c => c + 1)
+  }
+
+  // const func1 = function () {
+  //   console.log('x---', x);
+  // }
+
+  function func1 () {
+    // console.log('x---', x);
   }
 
   // 使用 useEffect 完成副作用操作。赋值给 useEffect 的函数会在组件渲染到屏幕之后执行。
   useEffect(() => {
     console.log('useEffect---count----', count)
     console.log('useEffect---document count---', document.getElementById('count').innerText);
+
+    func1()
     return () => {
       // 通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，useEffect 函数需返回一个清除函数。
       // 为防止内存泄漏，清除函数会在组件卸载前执行。另外，如果组件多次渲染（通常如此），则在执行下一个 effect 之前，上一个 effect 就已被清除。在上述示例中，意味着组件的每一次更新都会创建新的订阅
@@ -18,7 +30,7 @@ export function ExampleUseEffect () {
       console.log('清除useEffect---count----', count) // 每次执行清除函数，里面获取的数据是旧的
       console.log('清除useEffect---document count---', document.getElementById('count') && document.getElementById('count').innerText); // 每次执行清除函数，里面获取的dom是最新的（执行下一个 effect 之前，先清除上一个 effect-执行上一个effect的清除函数，传给 useEffect 的函数会在浏览器完成布局与绘制之后，在一个延迟事件中被调用 ）
     };
-  }, [count]);
+  }, [count, x]);
 
   useLayoutEffect(() => {
     console.log('useLayoutEffect---count----', count)
