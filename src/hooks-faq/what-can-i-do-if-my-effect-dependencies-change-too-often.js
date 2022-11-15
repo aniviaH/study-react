@@ -41,7 +41,9 @@ export function StateExample () {
     return () => clearInterval(id);
   }, []); // ✅ 我们的 effect 不使用组件作用域中的任何变量
 
-  return <h1>{count}</h1>;
+  return <>
+    <h1>{count}</h1>
+  </>;
 }
 // （setCount 函数的身份是被确保稳定的，所以可以放心的省略掉）
 // 此时，setInterval 的回调依旧每秒调用一次，但每次 setCount 内部的回调取到的 count 是最新值（在回调中变量命名为 c）。
