@@ -37,7 +37,7 @@ export default function App (props) {
               <Link to="/hooks">Hooks</Link>
             </li>
             <li>
-              <Link to="/hooks">Hooks-FAQ</Link>
+              <Link to="/hooks-faq">Hooks-FAQ</Link>
             </li>
           </ul>
         </nav>
