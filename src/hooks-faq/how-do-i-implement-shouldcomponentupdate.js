@@ -24,6 +24,7 @@ export function Child (props) {
   )
 }
 
+// React.memo 等效于 PureComponent，但它只比较 props
 export const MemoChild = memo(
   Child,
   function (prevProps, nextProps) {
