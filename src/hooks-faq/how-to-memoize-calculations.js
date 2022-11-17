@@ -19,6 +19,18 @@ export default function () {
   }
   const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
 
+  /**
+   * 
+   * @param {string} a 
+   * @param {number} b 
+   * @param {number} c 
+   * @return {number}
+   */
+  function testJSDoc (a, b, c) {
+
+  }
+  testJSDoc(1, 2, 3)
+
   return <>
     <p>---------------------------------------------</p>
     <button onClick={() => setA(a => a + 1)}>点击更新a</button>
