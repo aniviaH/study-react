@@ -14,7 +14,7 @@ export function ExampleUseEffect (props) {
   // }
 
   function func1 () {
-    console.log('x---', x);
+    // console.log('x---', x);
   }
 
   // 使用 useEffect 完成副作用操作。赋值给 useEffect 的函数会在组件渲染到屏幕之后执行。

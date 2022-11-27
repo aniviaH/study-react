@@ -64,3 +64,13 @@ module.exports = {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
+
+配置package.json scripts
+
+```js
+scripts {
+  <!-- "lint-0": "eslint --ext .js src/", -->
+  "lint": "eslint \"src/**/*.{js,vue}\"",
+  "lint-fix": "eslint --fix \"src/**/*.{js,vue}\""
+}
+```
