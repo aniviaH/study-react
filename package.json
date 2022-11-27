@@ -9,7 +9,9 @@
     "eject": "react-scripts eject",
     "lint-0": "eslint --ext .js src/",
     "lint": "eslint \"src/**/*.{js,vue}\"",
-    "lint-fix": "eslint --fix \"src/**/*.{js,vue}\""
+    "lint-fix": "eslint --fix \"src/**/*.{js,vue}\"",
+    "install-git-hook": "ln -s ./build/git-hooks/pre-commit .git/hooks/pre-commit",
+    "install-git-hook-by-cat": "cat ./build/git-hooks/pre-commit > .git/hooks/pre-commit"
   },
   "eslintConfig": {
     "extends": [
