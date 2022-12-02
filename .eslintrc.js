@@ -18,7 +18,9 @@ module.exports = {
     "no-tabs": 'error', // 禁用 tab
     "no-mixed-spaces-and-tabs": "error", // 禁止空格和 tab 的混合缩进
 
+    "no-extra-boolean-cast": "error",
+
     "react-hooks/rules-of-hooks": "error", // eslint-plugin-react-hooks 检查 Hook 的规则
-    "react-hooks/exhaustive-deps": "warn", // eslint-plugin-react-hooks 检查 effect 的依赖
+    "react-hooks/exhaustive-deps": "error", // eslint-plugin-react-hooks 检查 effect 的依赖
   }
 }

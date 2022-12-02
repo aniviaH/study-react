@@ -3,7 +3,7 @@ import { useState, useEffect, useLayoutEffect, useInsertionEffect } from "react"
 export function ExampleUseEffect (props) {
   const [count, setCount] = useState(0)
 
-  const {x} = props
+  const {x,} = props
 
   function handleCountChange () {
     setCount(c => c + 1)
