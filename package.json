@@ -12,7 +12,8 @@
     "lint-fix": "eslint --fix \"src/**/*.{js,vue}\"",
     "install-git-hook": "ln -s ./src/build/git-hooks/pre-commit .git/hooks/pre-commit",
     "install-git-hook-pre-commit-by-cat": "cat ./src/build/git-hooks/pre-commit > .git/hooks/pre-commit",
-    "install-git-hook-commit-msg-by-cat": "cat ./src/build/git-hooks/commit-msg > .git/hooks/commit-msg"
+    "install-git-hook-commit-msg-by-cat": "cat ./src/build/git-hooks/commit-msg > .git/hooks/commit-msg",
+    "pre-commit": "lint-staged"
   },
   "eslintConfig": {
     "extends": [

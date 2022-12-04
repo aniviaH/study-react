@@ -1,5 +1,5 @@
 #!/bin/sh
-npm run lint
+npm run pre-commit
 
 # 获取上面脚本的退出码
 exitCode="$?"
