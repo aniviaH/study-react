@@ -34,7 +34,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": "eslint"
+    "src/**/*.{js,jsx}": "eslint --fix"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

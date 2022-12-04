@@ -12,7 +12,9 @@ const str =
 // 命令行中的 --fix 选项可以自动修复一些该规则报告的问题。
 // 在上下文中比如 if 语句的测试表达式的结果已经被强制转化成了一个布尔值，再通过双重否定（!!）或 Boolean 转化是不必要的。例如，这些 if 语句是等价的
 const bar = 'bar'
-if (!!bar) { // 通过 eslint --fix 可进行修复 转为如下
-// if (bar) {
+// if (!!bar) { // 通过 eslint --fix 可进行修复 转为如下
+if (bar) {
   console.log(bar)
 }
+
+console.log('test--')
