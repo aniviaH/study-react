@@ -59,6 +59,20 @@ root.render(
   // </React.StrictMode>
 );
 
+const root2 = ReactDOM.createRoot(document.getElementById('root2'))
+root2.render(<>hello world!</>)
+function tick() {
+  const element = (
+    <div>
+      <div>Hello, world!</div>
+      <div>It is {new Date().toLocaleTimeString()}.</div>
+    </div>
+  );
+  root2.render(element);
+}
+tick()
+setInterval(tick, 1000);
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
