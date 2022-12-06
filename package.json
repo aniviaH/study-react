@@ -8,12 +8,14 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-0": "eslint --ext .js src/",
-    "lint": "eslint \"src/**/*.{js,vue}\"",
+    "lint-1": "eslint \"src/**/*.{js,vue}\"",
     "lint-fix": "eslint --fix \"src/**/*.{js,vue}\"",
     "install-git-hook": "ln -s ./src/build/git-hooks/pre-commit .git/hooks/pre-commit",
     "install-git-hook-pre-commit-by-cat": "cat ./src/build/git-hooks/pre-commit > .git/hooks/pre-commit",
     "install-git-hook-commit-msg-by-cat": "cat ./src/build/git-hooks/commit-msg > .git/hooks/commit-msg",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "husky-prepare": "husky install",
+    "lint": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
@@ -34,7 +36,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": "eslint --fix"
+    "src/**/*.{js,jsx}": "eslint"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -47,7 +49,11 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "lint-staged": "^13.1.0"
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.0"
   }
 }
