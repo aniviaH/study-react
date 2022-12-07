@@ -2,7 +2,7 @@ const bar = 'bar'
 
 const obj = {
   a: 'a',
-  b: 'b',
+  b: "b",
 }
 
 // if (!!bar) {
