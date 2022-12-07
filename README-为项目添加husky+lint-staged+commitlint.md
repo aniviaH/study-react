@@ -74,11 +74,22 @@ npm i lint-staged --save-dev
 
 ### 7.在package.json 或者根目录中创建.lintstagedrc 或者lint-staged.config.js文件配置 lint-staged 的命令
 
-从 v3.1 开始，可以使用不同的方式进行 lint-staged 配置：
-lint-staged 在你的对象 package.json
-.lintstagedrc JSON或YML格式的文件
-lint-staged.config.js JS格式的文件
-使用 --config 或 -c 标志传递配置文件
+#### lint-staged的多种配置方式
+
+Lint-staged can be configured in many ways: (<https://github.com/okonet/lint-staged#Configuration>)
+
+- lint-staged object in your package.json
+
+- .lintstagedrc file in JSON or YML format, or you can be explicit with the file extension:
+  - .lintstagedrc.json
+  - .lintstagedrc.yaml
+  - .lintstagedrc.yml
+- .lintstagedrc.mjs or lint-staged.config.mjs file in ESM format
+  - the default export value should be a configuration: export default { ... }
+- .lintstagedrc.cjs or lint-staged.config.cjs file in CommonJS format
+  - the exports value should be a configuration: module.exports = { ... }
+- lint-staged.config.js or .lintstagedrc.js in either ESM or CommonJS format, depending on whether your project's package.json contains the "type": "module" option or not.
+- Pass a configuration file using the --config or -c flag
 
 例子：在package.json文件中配置
 
@@ -105,7 +116,7 @@ module.exports = {
 }
 ```
 
-目的：在 commit 之前，先对暂存区的内容做一次 代码检查 和 代码美化，检查美化通过之后，再commit
+目的：在 commit 之前，先对暂存区的内容做一次 代码检查 和 代码美化，检查或美化通过之后, 重新提交到暂存区，再commit
 
 ### 8.添加commit-msg脚本
 
@@ -127,7 +138,7 @@ npx --no-install commitlint --edit $1
 
 ### 9.定制提交规范
 
-安装
+#### 安装commitlint依赖
 
 ```shell
 # https://github.com/conventional-changelog/commitlint
@@ -159,13 +170,14 @@ husky - commit-msg hook exited with code 1 (error)
 # 需要将文件格式转成utf8 或者 删除生成的文件重新手动新建commitlint.config.js
 ```
 
-定制提交格式
+#### 定制提交格式
 
 ```shell
 type(scope?): subject  #scope is optional; multiple scopes are supported (current delimiter options: "/", "\" and ",")
 ```
 
-常用的type类别
+#### 常用的type类别
+
 build
 chore
 ci
@@ -178,6 +190,19 @@ revert
 style
 test
 
+| type     | detail                                                       | 说明                         |
+| -------- | ------------------------------------------------------------ | ---------------------------- |
+| feat     | A new feature                                                | 新功能                       |
+| fix      | A bug fix                                                    | 修复 bug                     |
+| docs     | Documentation only changes                                   | 文档修改                     |
+| style    | Changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc) | 格式（不影响代码运行的变动） |
+| refactor | A code change that neither fixes a bug nor adds a feature    | 重构                         |
+| perf     | A code change that improves performance                      | 提高性能                     |
+| test     | Adding missing tests or correcting existing tests            | 添加缺失测试或更正现有测试   |
+| build    | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm) | 依赖的外部资源变化           |
+| chore    | Other changes that don’t modify src or test files            | 构建过程或辅助工具的变动     |
+| revert   | Reverts a previous commit                                    | 恢复先前的提交               |
+
 例子：
 
 ```shell
@@ -185,7 +210,8 @@ git commit -m 'feat: 增加 xxx 功能'
 git commit -m 'bug: 修复 xxx 功能'
 ```
 
-commitlint.config.js文件配置
+#### commitlint.config.js文件配置
+
 rule 由 name 和 配置数组 组成，如：'name:[0, 'always', 72]'
 数组中第一位为level，可选0,1,2，0为disable，1为warning，2为error，
 第二位为应用与否，可选always|never，
@@ -218,13 +244,13 @@ npm i --save-dev prettier
 npm i --save-dev eslint
 ```
 
-### 11.总结整个流程
+## 总结整个流程
 
 1. husky install 会创建.husky目录，并指定该目录为git hooks所在的目录。
 2. 添加git hooks
-  npx husky add .husky/pre-commit "npm run lint"
-  npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
-  
+    npx husky add .husky/pre-commit "npm run lint"
+    npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+
   添加后.husky目录下新增对应pre-commit，commit-msg钩子文件，在commit时会执行对应文件里的命令
 3. pre-commit钩子执行命令 npm run lint
    commit-msg钩子执行命令 npx --no-install commitlint --edit

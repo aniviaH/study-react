@@ -35,9 +35,6 @@
       "last 1 safari version"
     ]
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": "eslint"
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
