@@ -1,5 +1,5 @@
 export const TestCommaDangle = {
-  foo: 1,
+  foo: 'foo',
   bar: 'bar',
   zzz: 'zzz',
 }
@@ -17,5 +17,4 @@ if (bar) {
   // if (bar) {
   console.log(bar)
 }
-
 console.log('test--')
