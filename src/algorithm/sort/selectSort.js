@@ -9,10 +9,11 @@ export function mainSelectSort() {
 }
 
 // 选择排序
-// 0 ~ N-1 上选出最小值放到 0 位置
-// 1 ~ N-1 上选出最小值放到 1 位置
-// 2 ~ N-1 上选出最小值放到 2 位置
+// 0 ~ N-1 找出最小值放到 0 位置
+// 1 ~ N-1 找出最小值放到 1 位置
+// 2 ~ N-1 找出最小值放到 2 位置
 // ...
+// N-1 ~ N-1
 function selectSort(arr) {
   if (!arr || arr.length < 2) {
     return
