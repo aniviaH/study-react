@@ -4,6 +4,17 @@
 
 import micromatch from 'micromatch'
 
+/**
+ * 使用函数的形式配置
+ * https://github.com/okonet/lint-staged#using-js-configuration-files
+ * Writing the configuration file in JavaScript is the most powerful way to configure lint-staged (lint-staged.config.js, similar, or passed via --config). From the configuration file, you can export either a single function or an object.
+
+If the exports value is a function, it will receive an array of all staged filenames. You can then build your own matchers for the files and return a command string or an array of command strings. These strings are considered complete and should include the filename arguments, if wanted.
+
+If the exports value is an object, its keys should be glob matches (like in the normal non-js config format). The values can either be like in the normal config or individual functions like described above. Instead of receiving all matched files, the functions in the exported object will only receive the staged files matching the corresponding glob key.
+ */
+
+
 // export default (allStagedFiles) => {
 //   console.log('allStagedFiles---', allStagedFiles);
 //   // const shFiles = micromatch(allStagedFiles, ['**/src/**/*.sh'])
@@ -14,7 +25,7 @@ import micromatch from 'micromatch'
 //   // const docFiles = micromatch(allStagedFiles, ['**/*.md'])
 //   // return [`eslint ${codeFiles.join(' ')}`, `mdl ${docFiles.join(' ')}`]
 
-//   return ['eslint --fix', 'prettier --write']
+//   return ['eslint --fix', 'prettier --write'] // exports是函数形式，或者对象形式但glob里的value是函数形式，命令需要是完整的，如果需要文件参数则必须包含文件参数，否则执行不生效
 // }
 
 // lint-staged.config.js
