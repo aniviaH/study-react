@@ -3,15 +3,9 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import App from './App'
-
 import './test-eslint/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-
-const friend = {
-  id: '1',
-  name: '张三',
-}
 
 root.render(
   // <React.StrictMode>
