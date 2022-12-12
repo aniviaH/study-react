@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 
 const themes = {
   light: {
@@ -10,12 +10,12 @@ const themes = {
     text: 'dark',
     foreground: '#ffffff',
     background: '#222222',
-  }
+  },
 }
 
 const ThemeContext = React.createContext(themes.light)
 
-export function AppThemeColor () {
+export function AppThemeColor() {
   return (
     <ThemeContext.Provider value={themes.dark}>
       <Toolbar></Toolbar>
@@ -36,7 +36,7 @@ function ThemeButton() {
   return (
     <>
       <h3>内置hook useContext</h3>
-      <button style={{background: theme.background, color: theme.foreground}}>
+      <button style={{ background: theme.background, color: theme.foreground }}>
         I am styled by theme context -- theme: {theme.text}
       </button>
 

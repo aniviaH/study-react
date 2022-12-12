@@ -1,9 +1,9 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 // 自定义hook
 import useFriendStatus from './useFriendStatus'
 
-export function FriendStatus (props) {
+export function FriendStatus(props) {
   /* const [isOnline, setIsOnline] = useState(null)
 
   function handleStatusChange (status) {
@@ -30,13 +30,13 @@ export function FriendStatus (props) {
   )
 }
 
-export function FriendListItem (props) {
+export function FriendListItem(props) {
   console.log('props', props)
   const isOnline = useFriendStatus(props.friend.id)
-  
+
   return (
     <>
-      <li style={{color: isOnline ? 'green' : 'black'}}>
+      <li style={{ color: isOnline ? 'green' : 'black' }}>
         {props.friend.name}
       </li>
       <Circle color={isOnline ? 'green' : 'black'}></Circle>
@@ -45,7 +45,7 @@ export function FriendListItem (props) {
   )
 }
 
-export function FriendSelect () {
+export function FriendSelect() {
   const friendList = [
     { id: 1, name: 'Phoebe' },
     { id: 2, name: 'Rachel' },
@@ -53,16 +53,16 @@ export function FriendSelect () {
   ]
 
   // 在多个 Hook 之间传递信息
-  const [recipientID, setRecipientID] = useState(1);
-  const isRecipientOnline = useFriendStatus(recipientID);
+  const [recipientID, setRecipientID] = useState(1)
+  const isRecipientOnline = useFriendStatus(recipientID)
 
   return (
     <div>
       <select
         value={recipientID}
-        onChange={e => setRecipientID(e.target.value)}
+        onChange={(e) => setRecipientID(e.target.value)}
       >
-        {friendList.map(friend => (
+        {friendList.map((friend) => (
           <option key={friend.id} value={friend.id}>
             {friend.name}
           </option>
@@ -75,12 +75,19 @@ export function FriendSelect () {
   )
 }
 
-function Circle (props) {
+function Circle(props) {
   return (
-    <div style={{width: '10px', height: '10px', borderRadius: '50%', backgroundColor: props.color}}></div>
+    <div
+      style={{
+        width: '10px',
+        height: '10px',
+        borderRadius: '50%',
+        backgroundColor: props.color,
+      }}
+    ></div>
   )
 }
 
-function CompDivider () {
+function CompDivider() {
   return <p>---------------------------------------------</p>
 }

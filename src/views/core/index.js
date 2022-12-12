@@ -1,7 +1,5 @@
-import JSX from '../../core/jsx'
+import JSX from './core/jsx'
 
 export default function () {
-  return (
-    <JSX></JSX>
-  )
+  return <JSX></JSX>
 }
