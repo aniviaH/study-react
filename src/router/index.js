@@ -1,11 +1,6 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
-import Home from './../views/react-api/Home'
+import ReactApiHome from './../views/react-api/Home'
 import Hooks from './../views/react-api/hooks'
 import HooksFaq from './../views/react-api/hooks-faq'
 import Core from './../views/react-api/core'
@@ -13,11 +8,11 @@ import Core from './../views/react-api/core'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <ReactApiHome />,
   },
   {
     path: '/react',
-    element: <Home />,
+    element: <ReactApiHome />,
     children: [
       {
         path: 'hooks',
