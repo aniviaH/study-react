@@ -1,6 +1,6 @@
-// export default {
-//   "src/**/*.{js,jsx}": ['eslint --fix', 'prettier --write']
-// }
+export default {
+  "src/**/*.{js,jsx}": ['eslint --fix', 'prettier --write']
+}
 
 import micromatch from 'micromatch'
 
@@ -30,17 +30,17 @@ If the exports value is an object, its keys should be glob matches (like in the 
 
 // lint-staged.config.js
 
-export default {
-  "src/**/*.{js,jsx}": (files) => {
-    console.log('files----', files)
-    // from `files` filter those _NOT_ matching `*test.js`
-    // const match = micromatch.not(files, '*test.js')
-    // return files.map((filename) => `prettier --write '${filename}'`)
-    // return `prettier --write '${files.join(' ')}'`
-    return [`eslint --fix '${files.join(' ')}'`, `prettier --write '${files.join(' ')}'`]
-    // return files.map((filename) => `eslint --fix '${filename}'`)
-  },
-}
+// export default {
+//   "src/**/*.{js,jsx}": (files) => {
+//     console.log('files----', files)
+//     // from `files` filter those _NOT_ matching `*test.js`
+//     // const match = micromatch.not(files, '*test.js')
+//     // return files.map((filename) => `prettier --write '${filename}'`)
+//     // return `prettier --write '${files.join(' ')}'`
+//     return [`eslint --fix '${files.join(' ')}'`, `prettier --write '${files.join(' ')}'`]
+//     // return files.map((filename) => `eslint --fix '${filename}'`)
+//   },
+// }
 
 /**
  * eslint 命令查看 npx eslint --help
