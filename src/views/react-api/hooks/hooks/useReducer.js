@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
 export function todosReducer(state, action) {
   switch (action.type) {
@@ -20,7 +20,7 @@ export function todosReducer(state, action) {
 export default function useReducer(reducer, initialState) {
   const [state, setState] = useState(initialState)
 
-  function dispatch (action) {
+  function dispatch(action) {
     const nextState = reducer(state, action)
     setState(nextState)
   }

@@ -1,25 +1,39 @@
-import {ExampleUseState, ClassExampleUseState, ExampleUseReducer, ExampleUseState0, ExampleOfOldStateAndProp} from '../../hooks/useState'
-import {FriendStatus, FriendListItem, FriendSelect} from '../../hooks/FriendStatus'
-import {Todos} from '../../hooks/Todos'
-import {AppThemeColor} from '../../hooks/useContext'
-import {TextInputWithFocusButton, MeasureExample, MeasureExample2} from '../../hooks/useRef'
-import {ExampleUseCallback1, ExampleUseCallback2} from '../../hooks/useCallback'
-import {ExampleUseImperativeHandle} from '../../hooks/useImperativeHandle'
-import {ExampleUseTransition} from '../../hooks/useTransition'
-import {ExampleUseId} from '../../hooks/useId'
-import {ExampleUseEffect} from '../../hooks/useEffect'
+import {
+  ExampleUseState,
+  ClassExampleUseState,
+  ExampleUseReducer,
+  ExampleUseState0,
+  ExampleOfOldStateAndProp,
+} from './hooks/useState'
+import {
+  FriendStatus,
+  FriendListItem,
+  FriendSelect,
+} from './hooks/FriendStatus'
+import { Todos } from './hooks/Todos'
+import { AppThemeColor } from './hooks/useContext'
+import {
+  TextInputWithFocusButton,
+  MeasureExample,
+  MeasureExample2,
+} from './hooks/useRef'
+import { ExampleUseCallback1, ExampleUseCallback2 } from './hooks/useCallback'
+import { ExampleUseImperativeHandle } from './hooks/useImperativeHandle'
+import { ExampleUseTransition } from './hooks/useTransition'
+import { ExampleUseId } from './hooks/useId'
+import { ExampleUseEffect } from './hooks/useEffect'
 
 const friend = {
   id: '1',
-  name: '张三'
+  name: '张三',
 }
 
-export default function Hooks () {
+export default function Hooks() {
   return (
     <>
       <ExampleOfOldStateAndProp></ExampleOfOldStateAndProp>
       <ExampleUseState0></ExampleUseState0>
-      <ExampleUseState/>
+      <ExampleUseState />
       <ClassExampleUseState />
       <ExampleUseReducer />
 

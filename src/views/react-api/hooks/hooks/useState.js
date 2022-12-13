@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer } from 'react'
 
 const setCountArr = []
 const effectArr = []
 
-export function ExampleUseState0 () {
+export function ExampleUseState0() {
   console.log('ExampleUseState0---渲染---')
   // initialState 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：
   // const [count, setCount] = useState(0)
   const [count, setCount] = useState(() => {
     // const initialState = someExpensiveComputation(props);
-    const initialState = 0;
-    return initialState;
+    const initialState = 0
+    return initialState
   })
 
   return (
@@ -19,22 +19,19 @@ export function ExampleUseState0 () {
 
       <Child count={count}></Child>
 
-
-      <button onClick={() => setCount(c => c + 1)}>add</button>
+      <button onClick={() => setCount((c) => c + 1)}>add</button>
 
       {/* 如果你更新 State Hook 后的 state 与当前的 state 相同时，React 将跳过子组件的渲染并且不会触发 effect 的执行。（React 使用 Object.is 比较算法 来比较 state。） */}
-      <button onClick={() => setCount(c => c)}>setCurrent</button>
+      <button onClick={() => setCount((c) => c)}>setCurrent</button>
     </>
   )
 }
-function Child ({count}) {
-  console.log('Child---渲染---');
-  return (
-    <div>{count}</div>
-  )
+function Child({ count }) {
+  console.log('Child---渲染---')
+  return <div>{count}</div>
 }
 
-export function ExampleUseState () {
+export function ExampleUseState() {
   console.log('ExampleUseState------render---')
 
   const [count, setCount] = useState(0)
@@ -53,10 +50,8 @@ export function ExampleUseState () {
       "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
       "react-hooks/exhaustive-deps": "warn" // 检查 effect 的依赖
     */
-
     // React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render.
     // const [count2, setCoun2] = useState(0)
-    
     // React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render.
     // useEffect(() => {
     //   console.log('test---useEffect---')
@@ -75,9 +70,9 @@ export function ExampleUseState () {
     console.log(setCountArr[0] === setCountArr[1]) // true -> 每次渲染, state hook的更新函数都是同一个
   }
 
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  const [age, setAge] = useState(42)
+  const [fruit, setFruit] = useState('banana')
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }])
 
   // 被 effect hook调用的函数，挪到hook函数里去
   // The 'logFruit' function makes the dependencies of useEffect Hook (at line 80) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'logFruit' in its own useCallback() Hook.
@@ -91,7 +86,7 @@ export function ExampleUseState () {
     // 使用浏览器的 API 更新页面标题
     document.title = `You clicked ${count} times`
 
-    function logFruit () {
+    function logFruit() {
       console.log('fruit---', fruit)
     }
 
@@ -117,7 +112,6 @@ export function ExampleUseState () {
     console.log(effectArr[0] === effectArr[1]) // false -> 每次渲染, effect hook的effect函数都不同
   }
 
-
   return (
     <div>
       <p></p>
@@ -133,79 +127,76 @@ export function ExampleUseState () {
   )
 }
 
-
 export function ExampleOfOldStateAndProp() {
-  console.log('Example---');
-  const [count, setCount] = useState(0);
+  console.log('Example---')
+  const [count, setCount] = useState(0)
 
   // 如果你先点击「Show alert」然后增加计数器的计数，那这个 alert 会显示在你点击『Show alert』按钮时的 count 变量。
   function handleAlertClick() {
     setTimeout(() => {
-      alert('You clicked on: ' + count);
-    }, 3000);
+      alert('You clicked on: ' + count)
+    }, 3000)
   }
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button onClick={handleAlertClick}>
-        Show alert
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleAlertClick}>Show alert</button>
     </div>
-  );
+  )
 }
 
 export class ClassExampleUseState extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      count: 0
+      count: 0,
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('ClassExampleUseState---componentDidMount---')
     document.title = `You clicked ${this.state.count} times`
   }
-  componentDidUpdate () {
+  componentDidUpdate() {
     console.log('ClassExampleUseState---componentDidUpdate---')
     document.title = `You clicked ${this.state.count} times`
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     console.log('ClassExampleUseState---componentWillUnmount---')
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h3>内置hook useState</h3>
         <div>You Clicked {this.state.count} times</div>
-        <button onClick={() => this.setState({count: this.state.count + 1})}>click me</button>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          click me
+        </button>
         <p>---------------------------------------------</p>
       </div>
     )
   }
 }
 
-export function ExampleUseReducer({initailCount = 100}) {
-  const initialState = {count: 0}
-  function init (initailCount) {
+export function ExampleUseReducer({ initailCount = 100 }) {
+  const initialState = { count: 0 }
+  function init(initailCount) {
     debugger
     return {
-      count: initailCount
+      count: initailCount,
     }
   }
 
   function reducer(state, action) {
     switch (action.type) {
       case 'increment':
-        return {count: state.count + 1}
+        return { count: state.count + 1 }
       case 'decrement':
-        return {count: state.count - 1}
+        return { count: state.count - 1 }
       case 'reset':
         return init(action.payload)
       default:
@@ -225,9 +216,13 @@ export function ExampleUseReducer({initailCount = 100}) {
     <>
       <h3>内置hook useReducer</h3>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
-      <button onClick={() => dispatch({type: 'reset', payload: initailCount})}>Reset</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button
+        onClick={() => dispatch({ type: 'reset', payload: initailCount })}
+      >
+        Reset
+      </button>
       <p>---------------------------------------------</p>
     </>
   )

@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 // https://react.docschina.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often
 
@@ -27,41 +27,42 @@ function Counter() {
  * 
  */
 
-
 // 指定 [count] 作为依赖列表就能修复这个 Bug，但会导致每次改变发生时定时器都被重置。
 // 事实上，每个 setInterval 在被清除前（类似于 setTimeout）都会调用一次。但这并不是我们想要的。
 // 要解决这个问题，我们可以使用 setState 的函数式更新形式。它允许我们指定 state 该 如何 改变而不用引用 当前 state：
-export function StateExample () {
-  const [count, setCount] = useState(0);
+export function StateExample() {
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCount(c => c + 1); // ✅ 在这不依赖于外部的 `count` 变量
-    }, 1000);
-    return () => clearInterval(id);
-  }, []); // ✅ 我们的 effect 不使用组件作用域中的任何变量
+      setCount((c) => c + 1) // ✅ 在这不依赖于外部的 `count` 变量
+    }, 1000)
+    return () => clearInterval(id)
+  }, []) // ✅ 我们的 effect 不使用组件作用域中的任何变量
 
-  return <>
-    <h1>{count}</h1>
-  </>;
+  return (
+    <>
+      <h1>{count}</h1>
+    </>
+  )
 }
 // （setCount 函数的身份是被确保稳定的，所以可以放心的省略掉）
 // 此时，setInterval 的回调依旧每秒调用一次，但每次 setCount 内部的回调取到的 count 是最新值（在回调中变量命名为 c）。
 
-export function RefExample (props) {
+export function RefExample(props) {
   // 把最新的 props 保存在一个 ref 中
-  const latestProps = useRef(props);
+  const latestProps = useRef(props)
   useEffect(() => {
-    latestProps.current = props;
-  });
+    latestProps.current = props
+  })
 
   useEffect(() => {
     function tick() {
       // 在任何时候读取最新的 props
-      console.log(latestProps.current);
+      console.log(latestProps.current)
     }
 
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []); // 这个 effect 从不会重新执行
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, []) // 这个 effect 从不会重新执行
 }

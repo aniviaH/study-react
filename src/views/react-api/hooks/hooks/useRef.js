@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from 'react'
 
 export function TextInputWithFocusButton() {
   const inputEle = useRef(null)
@@ -19,7 +19,7 @@ export function TextInputWithFocusButton() {
 export function MeasureExample() {
   const [height, setHeight] = useState(0)
 
-  const measuredRef = useCallback(node => {
+  const measuredRef = useCallback((node) => {
     if (node !== null) {
       setHeight(node.getBoundingClientRect().height)
     }
@@ -28,7 +28,7 @@ export function MeasureExample() {
   return (
     <>
       <h4 ref={measuredRef}>callback ref</h4>
-      <h4>The  above  header is {Math.round(height)}px tall</h4>
+      <h4>The above header is {Math.round(height)}px tall</h4>
     </>
   )
 }
@@ -44,23 +44,21 @@ export function MeasureExample2() {
   return (
     <>
       <h4 ref={ref}>callback ref</h4>
-      {
-        rect !== null && (
-          <>
-            <h4>The  above  header is {Math.round(rect.height)}px tall</h4>
-            <h4>The  above  header is {Math.round(rect.width)}px width</h4>
-          </>
-        )
-      }
+      {rect !== null && (
+        <>
+          <h4>The above header is {Math.round(rect.height)}px tall</h4>
+          <h4>The above header is {Math.round(rect.width)}px width</h4>
+        </>
+      )}
       <p>---------------------------------------------</p>
     </>
   )
 }
 
-function useClientRect () {
+function useClientRect() {
   const [rect, setRect] = useState(null)
 
-  const ref = useCallback(node => {
+  const ref = useCallback((node) => {
     if (node !== null) {
       setRect(node.getBoundingClientRect())
     }

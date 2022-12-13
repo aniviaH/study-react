@@ -1,9 +1,9 @@
-import { useId } from "react"
+import { useId } from 'react'
 
-export function ExampleUseId () {
+export function ExampleUseId() {
   const id = useId()
 
-  console.log('id', id);
+  console.log('id', id)
   return (
     <>
       <p>---------------------------------------------</p>
@@ -17,7 +17,7 @@ export function ExampleUseId () {
   )
 }
 
-function NameField () {
+function NameField() {
   const id = useId()
 
   return (

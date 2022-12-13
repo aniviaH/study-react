@@ -1,14 +1,14 @@
-import { useRef, useState, useTransition } from "react";
+import { useRef, useState, useTransition } from 'react'
 
-export function ExampleUseTransition () {
-  console.log('ExampleUseTransition---');
+export function ExampleUseTransition() {
+  console.log('ExampleUseTransition---')
   const [isPending, startTransition] = useTransition()
   const [count, setCount] = useState(0)
   const inputRef = useRef(null)
 
-  function handleClick () {
+  function handleClick() {
     startTransition(() => {
-      setCount(c => c + 1)
+      setCount((c) => c + 1)
 
       // inputRef.current.focus()
     })
@@ -28,8 +28,6 @@ export function ExampleUseTransition () {
   )
 }
 
-function Spinner () {
-  return (
-    <div>loading...</div>
-  )
+function Spinner() {
+  return <div>loading...</div>
 }

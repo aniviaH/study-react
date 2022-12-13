@@ -25,13 +25,13 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 你可以把 useMemo 作为性能优化的手段，但不要把它当成语义上的保证。将来，React 可能会选择“遗忘”以前的一些 memoized 值，并在下次渲染时重新计算它们，比如为离屏组件释放内存。先编写在没有 useMemo 的情况下也可以执行的代码 —— 之后再在你的代码中添加 useMemo，以达到优化性能的目的
  */
 
-import { useCallback, useState, memo, useMemo } from "react";
+import { useCallback, useState, memo, useMemo } from 'react'
 
 const fun1Set = new Set()
 const fun2Set = new Set()
 const fun3Set = new Set()
 
-export function ExampleUseCallback1 () {
+export function ExampleUseCallback1() {
   const [count, setCount] = useState(0)
 
   //示例1包裹了useCallBack的函数
@@ -41,7 +41,7 @@ export function ExampleUseCallback1 () {
 
   //示例2没有包裹useCallBack的函数
   const fun2 = () => {
-    console.log('示例二函数');
+    console.log('示例二函数')
   }
 
   // 示例3包裹了useCallBack的函数，但有依赖项数据
@@ -52,7 +52,7 @@ export function ExampleUseCallback1 () {
   // useCallback(fn, deps) 相当于 useMemo(() => fn, deps)。
   const fun3 = useMemo(() => {
     return () => {
-      console.log('useCallback回调函数依赖count---', count);
+      console.log('useCallback回调函数依赖count---', count)
     }
   }, [count])
 
@@ -60,11 +60,10 @@ export function ExampleUseCallback1 () {
   fun2Set.add(fun2)
   fun3Set.add(fun3)
 
-  console.log('count变化，每次渲染时---');
-  console.log('fun1Set.size---', fun1Set.size); // fun1会一直创建相同的函数内存地址
-  console.log('fun2Set.size---', fun2Set.size); // fun2会一直创建不同的函数内存地址
-  console.log('fun3Set.size---', fun3Set.size); // fun2会一直创建不同的函数内存地址
-
+  console.log('count变化，每次渲染时---')
+  console.log('fun1Set.size---', fun1Set.size) // fun1会一直创建相同的函数内存地址
+  console.log('fun2Set.size---', fun2Set.size) // fun2会一直创建不同的函数内存地址
+  console.log('fun3Set.size---', fun3Set.size) // fun2会一直创建不同的函数内存地址
 
   /* 
   一：useCallBack不是每个函数都需要使用！
@@ -93,7 +92,9 @@ export function ExampleUseCallback1 () {
     <>
       <h3>内置hook useCallback</h3>
       <p>count: {count}</p>
-      <button onClick={() => setCount(count => count + 2)}>点击更新count</button>
+      <button onClick={() => setCount((count) => count + 2)}>
+        点击更新count
+      </button>
     </>
   )
 }
@@ -120,12 +121,10 @@ React.memo()，是一种缓存技术。
 /* 我们只需要使用useCallBack保护一下父组件中传入子组件的那个函数（toChildFun函数）保证它不会在没有必要的情况下返回一个新的内存地址就好了。 */
 
 export function ExampleUseCallback2() {
-  return (
-    <Parent></Parent>
-  )
+  return <Parent></Parent>
 }
 
-export function Parent () {
+export function Parent() {
   const [parentState, setParentState] = useState(0) // 父组件的state
   const [count, setCount] = useState(0)
 
@@ -135,17 +134,18 @@ export function Parent () {
   }
 
   const toChildFunFromUseCallback = useCallback(() => {
-    console.log('需要传入子组件的函数-被useCallback包裹');
+    console.log('需要传入子组件的函数-被useCallback包裹')
   }, [])
 
-  // 
+  //
   return (
     <>
       <p></p>
       {/* <button onClick={() => setParentState(val => val + 1)}>点击我改变父组件中与Child组件（被Memo包裹）无关的state</button> */}
-      <button onClick={() => setParentState(parentState + 1)}>点击我 改变父组件中 与Child组件无关的state（Child组件需要被Memo包裹）)</button>
+      <button onClick={() => setParentState(parentState + 1)}>
+        点击我 改变父组件中 与Child组件无关的state（Child组件需要被Memo包裹）)
+      </button>
 
-      
       {/* 更新parentState不会触发子组件更新 */}
       {/* <Child count={count}></Child> */}
 
@@ -167,9 +167,7 @@ const Child = memo(() => {
   return <div>子组件</div>
 })
 
-
 /* 总结
 useCallBack不要每个函数都包一下，否则就会变成反向优化，useCallBack本身就是需要一定性能的
 useCallBack并不能阻止函数重新创建,它只能通过依赖决定返回新的函数还是旧的函数,从而在依赖不变的情况下保证函数地址不变
 useCallBack需要配合React.memo使用 */
-
