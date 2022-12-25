@@ -13,13 +13,32 @@ export function ExampleUseState0() {
     return initialState
   })
 
+  function handleAdd() {
+    setCount((c) => {
+      const res = c + 1
+
+      console.log('setCount前使用count: ', c)
+      doQuery(res)
+
+      return res
+    })
+  }
+
+  function doQuery(c) {
+    console.log('doQuery---count', c)
+  }
+
+  useEffect(() => {
+    console.log('useEffetc---count: ', count)
+  }, [count])
+
   return (
     <>
       <h3>内置hook useState</h3>
 
       <Child count={count}></Child>
 
-      <button onClick={() => setCount((c) => c + 1)}>add</button>
+      <button onClick={handleAdd}>add</button>
 
       {/* 如果你更新 State Hook 后的 state 与当前的 state 相同时，React 将跳过子组件的渲染并且不会触发 effect 的执行。（React 使用 Object.is 比较算法 来比较 state。） */}
       <button onClick={() => setCount((c) => c)}>setCurrent</button>
