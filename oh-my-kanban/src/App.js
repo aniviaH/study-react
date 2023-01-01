@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import logo from './logo.svg'
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {css} from '@emotion/react'
 
 function App() {
@@ -100,6 +100,9 @@ function App() {
 
   const KanbanNewCard = ({ onSubmit }) => {
     const [title, setTitle] = useState('')
+
+    const inputElem = useRef(null)
+
     const handleChange = (evt) => {
       setTitle(evt.target.value)
     }
@@ -108,6 +111,11 @@ function App() {
         onSubmit(title)
       }
     }
+
+    useEffect(() => {
+      inputElem.current.focus()
+    }, [])
+
     return (
       <li css={kanbanCardStyles}>
         <h3>添加新卡片</h3>
@@ -121,6 +129,7 @@ function App() {
           <input
             type="text"
             value={title}
+            ref={inputElem}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
