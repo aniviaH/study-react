@@ -8,7 +8,7 @@ const COLUMN_BG_COLORS = {
   loading: '#E3E3E3',
   todo: '#C9AF97',
   ongoing: '#FFE799',
-  done: '#C0E8EA'
+  done: '#C0E8BA'
 }
 const DATA_STORE_KEY = 'kanban-data-store'
 const COLUMN_KEY_TODO = 'todo'
