@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import KanbanCard from './KanbanCard';
 import KanbanNewCard from './KanbanNewCard';
 
@@ -69,6 +69,10 @@ export default function KanbanColumn({
 
     setShowAdd(false);
   };
+
+  // if (showAdd) {
+  //   useEffect(() => {})
+  // }
 
   return (
     <section
