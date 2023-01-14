@@ -1,11 +1,11 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react';
 
 function fibonacci(n) {
   if (n <= 2) {
-    return n
+    return n;
   }
 
-  return fibonacci(n - 1) + fibonacci(n - 2)
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 export default function UseMemoAndCallbackDemo() {
@@ -15,11 +15,11 @@ export default function UseMemoAndCallbackDemo() {
   //       ^                            ^                         ^
   //       |                            |                         |
   //   工厂函数返回值                   工厂函数                  依赖值数组
-  const [num, setNum] = useState('10')
+  const [num, setNum] = useState('10');
   const sum = useMemo(() => {
-    const n = parseInt(num, 10)
-    return fibonacci(n)
-  }, [num])
+    const n = parseInt(num, 10);
+    return fibonacci(n);
+  }, [num]);
 
   // useCallback的使用场景，获得记忆化的函数，使用返回的函数传给子组件，可减少子组件的更新
   // const memoizedFunc = useCallback(() => {/*省略*/}, [a, b]);
@@ -37,7 +37,11 @@ export default function UseMemoAndCallbackDemo() {
 
   return (
     <span>
-      fibonacci({num}): {sum}
+      fibonacci(
+      {num}
+      ):
+      {' '}
+      {sum}
     </span>
-  )
+  );
 }

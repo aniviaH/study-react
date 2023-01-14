@@ -1,11 +1,9 @@
-import { css } from '@emotion/react'
-import { useState } from 'react'
-import KanbanCard from './KanbanCard'
-import KanbanNewCard from './KanbanNewCard'
+import { css } from '@emotion/react';
+import React, { useState } from 'react';
+import KanbanCard from './KanbanCard';
+import KanbanNewCard from './KanbanNewCard';
 
 export default function KanbanColumn({
-  children,
-  className,
   title,
   bgColor,
   cardList = [],
@@ -15,12 +13,12 @@ export default function KanbanColumn({
   onDrop,
   canAddNew = false,
   onAdd,
-  onRemove
+  onRemove,
 }) {
-  const [showAdd, setShowAdd] = useState(false)
-  const handleAdd = (evt) => {
-    setShowAdd(true)
-  }
+  const [showAdd, setShowAdd] = useState(false);
+  const handleAdd = () => {
+    setShowAdd(true);
+  };
 
   const kanbanColumnStyles = css`
     flex: 1 1;
@@ -64,35 +62,35 @@ export default function KanbanColumn({
     &.column-done {
       background-color: #C0E8EA;
     } */
-  `
+  `;
 
   const handleSubmit = (newCard) => {
-    onAdd && onAdd(newCard)
+    onAdd && onAdd(newCard);
 
-    setShowAdd(false)
-  }
+    setShowAdd(false);
+  };
 
   return (
     <section
       onDragStart={() => setIsDragSource(true)} // 由KanbanCard的onDragStart冒泡触发
       onDragOver={(evt) => {
-        evt.preventDefault()
-        evt.dataTransfer.dropEffect = 'move'
-        setIsDragTarget(true)
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'move';
+        setIsDragTarget(true);
       }}
       onDragLeave={(evt) => {
-        evt.preventDefault()
-        evt.dataTransfer.dropEffect = 'none'
-        setIsDragTarget(false)
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'none';
+        setIsDragTarget(false);
       }}
       onDrop={(evt) => {
-        evt.preventDefault()
-        onDrop && onDrop()
+        evt.preventDefault();
+        onDrop && onDrop();
       }}
       onDragEnd={(evt) => {
-        evt.preventDefault()
-        setIsDragSource(false)
-        setIsDragTarget(false)
+        evt.preventDefault();
+        setIsDragSource(false);
+        setIsDragTarget(false);
       }}
       css={kanbanColumnStyles}
     >
@@ -100,6 +98,7 @@ export default function KanbanColumn({
         {title}
         {canAddNew && (
           <button
+            type="button"
             className="btn-add-todo"
             disabled={showAdd}
             onClick={handleAdd}
@@ -115,10 +114,11 @@ export default function KanbanColumn({
             key={props.title}
             dragStart={() => setDraggedItem && setDraggedItem(props)}
             onRemove={onRemove}
-            {...props}
+            status={props.status}
+            title={props.title}
           />
         ))}
       </ul>
     </section>
-  )
+  );
 }
