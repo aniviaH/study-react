@@ -1,10 +1,28 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
+import { useState } from 'react'
+import KanbanCard from './KanbanCard'
+import KanbanNewCard from './KanbanNewCard'
 
 export default function KanbanColumn({
-  children, className, title, bgColor, setIsDragSource = () => { }, setIsDragTarget = () => { }, onDrop
+  children,
+  className,
+  title,
+  bgColor,
+  cardList = [],
+  setDraggedItem,
+  setIsDragSource = () => {},
+  setIsDragTarget = () => {},
+  onDrop,
+  canAddNew = false,
+  onAdd,
 }) {
+  const [showAdd, setShowAdd] = useState(false)
+  const handleAdd = (evt) => {
+    setShowAdd(true)
+  }
+
   const kanbanColumnStyles = css`
     flex: 1 1;
     display: flex;
@@ -47,34 +65,60 @@ export default function KanbanColumn({
     &.column-done {
       background-color: #C0E8EA;
     } */
-  `;
-  // const combinedClassName = `kanban-column ${className}`
+  `
+
+  const handleSubmit = (newCard) => {
+    onAdd && onAdd(newCard)
+
+    setShowAdd(false)
+  }
+
   return (
     <section
       onDragStart={() => setIsDragSource(true)} // 由KanbanCard的onDragStart冒泡触发
       onDragOver={(evt) => {
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'move';
-        setIsDragTarget(true);
-      } }
+        evt.preventDefault()
+        evt.dataTransfer.dropEffect = 'move'
+        setIsDragTarget(true)
+      }}
       onDragLeave={(evt) => {
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'none';
-        setIsDragTarget(false);
-      } }
+        evt.preventDefault()
+        evt.dataTransfer.dropEffect = 'none'
+        setIsDragTarget(false)
+      }}
       onDrop={(evt) => {
-        evt.preventDefault();
-        onDrop && onDrop();
-      } }
+        evt.preventDefault()
+        onDrop && onDrop()
+      }}
       onDragEnd={(evt) => {
-        evt.preventDefault();
-        setIsDragSource(false);
-        setIsDragTarget(false);
-      } }
+        evt.preventDefault()
+        setIsDragSource(false)
+        setIsDragTarget(false)
+      }}
       css={kanbanColumnStyles}
     >
-      <h2 className="column-title">{title}</h2>
-      <ul className="column-list">{children}</ul>
+      <h2 className="column-title">
+        {title}
+        {canAddNew && (
+          <button
+            className="btn-add-todo"
+            disabled={showAdd}
+            onClick={handleAdd}
+          >
+            &#8853; 添加新卡片
+          </button>
+        )}
+      </h2>
+      <ul className="column-list">
+        {canAddNew && showAdd && <KanbanNewCard onSubmit={handleSubmit} />}
+        {cardList.map((props) => (
+          <KanbanCard
+            key={props.title}
+            dragStart={() => setDraggedItem && setDraggedItem(props)}
+            {...props}
+          />
+        ))}
+      </ul>
     </section>
-  );
+  )
 }
