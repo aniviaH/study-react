@@ -3,16 +3,13 @@ import logo from './logo.svg'
 import './App.css'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { css } from '@emotion/react'
-import KanbanBoard from './KanbanBoard'
-import KanbanColumn from './KanbanColumn'
-import KanbanCard from './KanbanCard'
-import KanbanNewCard from './KanbanNewCard'
-import {
+import UseMemoAndCallbackDemo from './DemoUseMemoAndCallback'
+import KanbanBoard, {
   COLUMN_KEY_TODO,
   COLUMN_KEY_ONGOING,
   COLUMN_KEY_DONE,
 } from './KanbanBoard'
-import UseMemoAndCallbackDemo from './DemoUseMemoAndCallback'
+import AdminContext from './context/AdminContext'
 
 const DATA_STORE_KEY = 'kanban-data-store'
 
@@ -40,6 +37,8 @@ function App() {
     { title: '测试任务-1', status: '2022-12-16 14:40' },
   ])
 
+  const [isAdmin, setIsAdmin] = useState(false)
+
   // 获取卡片列表数据
   useEffect(() => {
     const data = window.localStorage.getItem(DATA_STORE_KEY)
@@ -65,9 +64,10 @@ function App() {
     updaters[column]((currentState) => [newCard, ...currentState])
   }
 
-  const handleRemove = (column, draggedItem) => {
+  const handleRemove = (column, cardToRemove) => {
     updaters[column]((currentState) =>
-      currentState.filter((item) => !Object.is(item, draggedItem))
+      // currentState.filter((item) => !Object.is(item, draggedItem))
+      currentState.filter((item) => item.title !== cardToRemove.title)
     )
   }
 
@@ -78,6 +78,10 @@ function App() {
       doneList,
     })
     window.localStorage.setItem(DATA_STORE_KEY, dataToSave)
+  }
+
+  const handleToggleAdmin = (evt) => {
+    setIsAdmin(!isAdmin)
   }
 
   return (
@@ -96,20 +100,35 @@ function App() {
           color: white;
         `}
       >
-        <h1>
-          我的看板 <button onClick={handleSaveAll}>保存所有卡片</button>{' '}
-          <UseMemoAndCallbackDemo />{' '}
+        <h1 css={css`
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+        `}>
+          我的看板
+          <button onClick={handleSaveAll}>保存所有卡片</button>
+          <label css={css`
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+          `}>
+            <input type="checkbox" value={isAdmin} onChange={handleToggleAdmin} />
+            管理员模式
+          </label>
+          {/* <UseMemoAndCallbackDemo /> */}
         </h1>
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <KanbanBoard
-        isLoading={isLoading}
-        todoList={todoList}
-        ongoingList={ongoingList}
-        doneList={doneList}
-        onAdd={handleAdd}
-        onRemove={handleRemove}
-      ></KanbanBoard>
+      <AdminContext.Provider value={isAdmin}>
+        <KanbanBoard
+          isLoading={isLoading}
+          todoList={todoList}
+          ongoingList={ongoingList}
+          doneList={doneList}
+          onAdd={handleAdd}
+          onRemove={handleRemove}
+        ></KanbanBoard>
+      </AdminContext.Provider>
     </div>
   )
 }

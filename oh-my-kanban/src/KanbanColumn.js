@@ -17,6 +17,7 @@ export default function KanbanColumn({
   onDrop,
   canAddNew = false,
   onAdd,
+  onRemove
 }) {
   const [showAdd, setShowAdd] = useState(false)
   const handleAdd = (evt) => {
@@ -115,6 +116,7 @@ export default function KanbanColumn({
           <KanbanCard
             key={props.title}
             dragStart={() => setDraggedItem && setDraggedItem(props)}
+            onRemove={onRemove}
             {...props}
           />
         ))}

@@ -29,7 +29,6 @@ export default function KanbanBoard({
   ongoingList,
   doneList,
   onAdd,
-  onDrop,
   onRemove,
 }) {
   // 拖拽
@@ -104,6 +103,7 @@ export default function KanbanBoard({
             setDraggedItem={setDraggedItem}
             cardList={doneList}
             onDrop={handleDrop}
+            onRemove={onRemove.bind(null, COLUMN_KEY_DONE)}
           ></KanbanColumn>
         </>
       )}

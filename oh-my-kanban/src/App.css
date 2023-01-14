@@ -12,6 +12,15 @@
   pointer-events: none;
 }
 
+/* App-header>h1>* {
+  margin-left: 1rem;
+}
+
+.App-header>h1>label {
+  font-size: initial;
+  font-weight: initial;
+} */
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { css } from '@emotion/react'
 import { MINUTE, HOUR, DAY, UPDATE_INTERVAL } from './App'
+import AdminContext from './context/AdminContext'
 
 export const kanbanCardStyles = css`
   margin-bottom: 1rem;
@@ -22,9 +23,11 @@ export const kanbanCardTitleStyles = css`
   min-height: 3rem;
 `
 
-export default function KanbanCard({ status, title, dragStart }) {
+export default function KanbanCard({ status, title, dragStart, onRemove }) {
   // props.justWantToSetNewProp = '尝试修改props对象'
   const [displayTime, setDisplayTime] = useState(status)
+
+  const isAdmin = useContext(AdminContext)
 
   useEffect(() => {
     const updateDisplayTime = () => {
@@ -65,7 +68,9 @@ export default function KanbanCard({ status, title, dragStart }) {
         `}
         title={status}
       >
-        {displayTime}
+        {displayTime} {isAdmin && onRemove && (
+          <button onClick={() => onRemove({title})}>X</button>
+        )}
       </div>
     </li>
   )
