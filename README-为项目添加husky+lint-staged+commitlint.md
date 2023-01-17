@@ -267,3 +267,6 @@ npm i --save-dev eslint
 7. 执行commit-msg钩子的命令 npx --no-install commitlint --edit 并将执行结果传给$1作为退出标志位(退出标志非0则commit失败)
 8. commitlint 通过配置文件 commitlint.config.js 进行对提交信息进行校验，校验不通过则commit失败，校验通过则commit成功
 9. 所以其中包含的技术点包括[git hooks, husky, lint-staged, commitlint, eslint, prettier]
+
+参考文章：
+segmentfault-编码规范，代码提交规范全家桶之husky+lint-staged+commitlint: <https://segmentfault.com/a/1190000040615432?utm_source=sf-hot-article>
