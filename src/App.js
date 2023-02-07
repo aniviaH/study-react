@@ -18,7 +18,8 @@ import Core from './views/react-api/core'
 export default function App(props) {
   console.log('App---', props)
   return (
-    <RouterProvider router={router}></RouterProvider>
+    // <RouterProvider router={router}></RouterProvider>
+    <Home />
     // <Router>
     //   <div>
     //     <nav>
