@@ -26,7 +26,9 @@ export default function Home() {
     <>
       <h2>Home</h2>
 
-      <h6>list: {list}</h6>
+      <h1 style={{ color: 'red', fontSize: '12px', backgroundColor: 'green' }}>
+        list: {list}
+      </h1>
       <button onClick={onAddId}>add id</button>
 
       {/* <nav>
