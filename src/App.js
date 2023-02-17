@@ -17,9 +17,10 @@ import Hooks from './views/react-api/hooks'
 import HooksFaq from './views/react-api/hooks-faq'
 import Core from './views/react-api/core'
 import Redux from './views/redux'
+import UseRefDemo from './views/useRef'
 
 export default function App(props) {
-  console.log('App---', props)
+  // console.log('App---', props)
   return (
     // <RouterProvider router={router}></RouterProvider>
     // <Home />
@@ -42,6 +43,9 @@ export default function App(props) {
             <li>
               <Link to="/redux">Redux</Link>
             </li>
+            <li>
+              <Link to="/useRef">useRef</Link>
+            </li>
           </ul>
         </nav>
         <div className="page-body" style={{ border: '1px solid green' }}>
@@ -50,6 +54,7 @@ export default function App(props) {
             <Route path="/hooks-faq" element={<HooksFaq />}></Route>
             <Route path="/core" element={<Core />}></Route>
             <Route path="/redux" element={<Redux />}></Route>
+            <Route path="/useRef" element={<UseRefDemo />}></Route>
             <Route path="/" element={<Home />}></Route>
           </Routes>
         </div>

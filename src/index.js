@@ -24,8 +24,8 @@ function tick() {
   )
   root2.render(element)
 }
-tick()
-setInterval(tick, 1000)
+// tick()
+// setInterval(tick, 1000)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
