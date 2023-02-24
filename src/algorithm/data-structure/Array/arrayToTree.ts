@@ -184,7 +184,7 @@ function flatToTreeByMapAndUptimize (arr: PartItem[]): PartItem[] {
 }
 
 // 一行代码
-function flatToTreeByOneLine (arr: PartItem[], pid: Number) {
+function flatToTreeByOneLine (arr: PartItem[], pid: Number): PartItem[] {
   return arr.filter(item => item.pid === pid).map(item => ({...item, children: flatToTreeByOneLine(arr, item.id)}))
 }
 
