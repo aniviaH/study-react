@@ -1,5 +1,6 @@
 import RenderFrame from './RenderFrame'
 import TabView from './TabView'
+import TransitionCase from './TransitionCase'
 
 export default function () {
   return (
@@ -9,6 +10,8 @@ export default function () {
 
       {/* useTransition */}
       <TabView />
+
+      <TransitionCase />
     </>
   )
 }
