@@ -42,7 +42,7 @@ function performUnitOfWork(deadline) {
     return;
   }
   // 当前有工作我们还要看一个东西 这个东西不确定
-  if (deadline.didTimeout) { // 当前帧是否还有额外的时间
+  if (deadline.timeRamaining() < 1) { // 当前帧是否还有额外的时间 判断deadline的didTimeout timeRemaining -> 返回当前帧剩余的时间【毫秒】
     // 假设到span的时候，当前帧已经没有空闲时间了
     // 我们把任务推进下一帧执行
 
@@ -88,7 +88,7 @@ function performUnitOfWork(deadline) {
     // 比方说你有class 事件 事件也要绑定上 ------
     // 等待commit阶段一次性提交到页面中去
     presentWork = presentWork.next // 转到button // buttong的next是不是没东西了
-    performUnitOfWork(deadline) // 还是在当前帧做事情
+    performUnitOfWork(deadline) // 还是在当前帧做事情 那意味着多次递归用的都是同一个deadline对象的didTimeout
   }
 }
 
