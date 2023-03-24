@@ -51,17 +51,33 @@ export default function TabView() {
         // 在新闻页面未渲染完时 切换到 关于我们 pending: true 新闻页面的渲染工作(里面的for循环打印)立即停止，然后渲染关于我们页面
         // 再次从关于我们 切换 到首页 pending: false
         setPresentActiveTab(tab)
-      }) //
+      })
     },
     [pending]
   )
+  const changeTabByParentTransition = useCallback((tab) => {
+    setPresentActiveTab(tab)
+  }, [])
 
   return (
     <div>
       {/* 1. 展示tab 2. 切换tab渲染不同的页面 */}
       {tabs.map((tabItem) => {
         return (
-          <button key={tabItem.key} onClick={() => changeTab(tabItem.key)}>
+          // <button key={tabItem.key} onClick={() => changeTab(tabItem.key)}>
+          //   {tabItem.label}
+          // </button>
+
+          // 写在触发事件里面也可以
+          <button
+            key={tabItem.key}
+            onClick={() => {
+              startTransition(() => {
+                console.log('pending: ', pending)
+                changeTabByParentTransition(tabItem.key)
+              })
+            }}
+          >
             {tabItem.label}
           </button>
         )
