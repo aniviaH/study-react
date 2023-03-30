@@ -2,6 +2,7 @@ import RenderFrame from './RenderFrame'
 import TabView from './TabView'
 import TransitionCase from './TransitionCase'
 import TestTS from './TestTS.tsx'
+import MyUseState from './MyHooks/useState'
 
 export default function () {
   return (
@@ -15,6 +16,10 @@ export default function () {
       <TransitionCase />
 
       <TestTS />
+
+      <MyUseState />
+      <MyUseState />
+      <MyUseState />
     </>
   )
 }

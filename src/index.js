@@ -6,12 +6,18 @@ import App from './App'
 import './test-eslint/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+// 我们的render就是这个 只不过我们的性能比较差 我们没有diff算法
+function render() {
+  root.render(
+    // <React.StrictMode>
+    <App />
+    // </React.StrictMode>
+  )
+}
 
-root.render(
-  // <React.StrictMode>
-  <App />
-  // </React.StrictMode>
-)
+render()
+
+window.render = render
 
 const root2 = ReactDOM.createRoot(document.getElementById('root2'))
 root2.render(<>hello world!</>)
