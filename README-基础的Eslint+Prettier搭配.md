@@ -2,7 +2,8 @@
 
 ## 可直接使用的搭配模板
 
-.eslintrc.js
+```js
+// .eslintrc.js
 module.exports = {
   "parserOptions": {
     // "ecmaVersion": 6,
@@ -21,15 +22,17 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn" // eslint-plugin-react-hooks 检查 effect 的依赖
   }
 }
+```
 
-.prettierrc.js
+```js
+// .prettierrc.js
 module.exports = {
   // 最大行长
   printWidth: 80,
 
   // 指定每个缩进级别的空格数 需useTabs为false才生效
   tabWidth: 2,
-  
+
   // 使用制表符而不是空格缩进行
   useTabs: true,
 
@@ -64,8 +67,9 @@ module.exports = {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
+```
 
-配置package.json scripts
+配置package.json 的 scripts
 
 ```js
 scripts {
