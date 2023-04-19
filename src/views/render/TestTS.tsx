@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState, type ElementType } from 'react'
 
 interface User {
   name: string
@@ -7,6 +7,10 @@ interface User {
 
 export default function TestTS () {
   const [count, setCount] = useState<number>(0)
+
+  const m = useMemo<number>(() => {
+    return 1
+  }, [])
 
   const handleClick = useCallback(() => {
     setCount((count) => count + 2)
